@@ -1,69 +1,111 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Global Custom Properties */
 :root {
-  --green-base-color: #1f8769;
-  --white-base-color: #f7f7f7;
-  --gray-ligth-color: #5a5964;
+  --color-primary-400: hsl(158, 36%, 37%);
+  --color-secondary-200: hsl(30, 38%, 92%);
+
+  --color-neutral-900: hsl(212, 21%, 14%);
+  --color-neutral-400: hsl(228, 12%, 48%);
+  --color-neutral-100: hsl(0, 0%, 100%);
+
+  --font-weight-regular: 500;
+  --font-weight-bold: 700;
+
+  --font-family-base: "Montserrat", sans-serif;
+  --font-family-fancy: "Fraunces", serif;
+}
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
+/* General styling */
 body {
-  background-color: #f4eae2;
+  background-color: var(--color-secondary-200);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-400);
+
+  margin: 1rem;
 }
-main {
-  width: 100vw;
-  padding: 1rem;
-}
+
 p {
-  margin-bottom: 1rem;
-  color: var(--gray-ligth-color);
+  line-height: 2rem;
 }
+
+/* Utilities (Class styling) */
 .flex-row-container {
   display: flex;
+  flex-wrap: wrap; /* if no more space continue in the next line */
   align-items: center;
   gap: 1rem;
 }
 .button {
-  background-color: var(--green-base-color);
-  color: var(--white-base-color);
-  font-size: medium;
-  font-weight: 600;
+  background-color: var(--color-primary-400);
+  color: var(--color-neutral-100);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
   padding: 1rem;
   border-radius: 0.5rem;
   border: none;
 }
 
+/* Component Styling */
+/* Product styles */
 .product {
-  background-color: var(--white-base-color);
-  width: 100%;
-  border-radius: 1rem;
+  --content-padding: 2rem;
+  --content-spacing: 1rem;
+
+  background-color: var(--color-neutral-100);
+  border-radius: 0.5rem; /* .5rem compute as 8px in firefox */
   overflow: hidden;
 }
-.product__picture {
-  width: 100%;
-}
+
 .product__main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
+  display: grid;
+  gap: var(--content-spacing);
+  padding: var(--content-padding);
+}
+
+.product__title {
+  font-family: var(--font-family-fancy);
+  font-size: 2rem;
+  color: var(--color-neutral-900);
 }
 
 .product__category {
   order: -1;
-  margin: 0;
-  color: var(--gray-ligth-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
 }
+
 .product__actual-price {
-  color: var(--green-base-color);
-  font-size: x-large;
-  font-weight: 900;
-  margin: 0;
+  color: var(--color-primary-400);
+  font-family: var(--font-family-fancy);
+  font-size: 2rem;
+  line-height: 3rem;
 }
+
 .product__original-price {
-  color: var(--gray-ligth-color);
-  font-size: smaller;
-  margin: 0;
+  text-decoration: line-through;
 }
