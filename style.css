@@ -97,6 +97,18 @@ body {
   max-width: 740px;
 }
 
+@media (min-width: 600px) {
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  .product {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product__picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 .product__main-content {
   display: grid;
   gap: var(--content-spacing);
@@ -124,16 +136,4 @@ body {
 
 .product__original-price {
   text-decoration: line-through;
-}
-
-@media (min-width: 600px) {
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-  .product {
-    grid-template-columns: 1fr 1fr;
-  }
-  .product__picture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
