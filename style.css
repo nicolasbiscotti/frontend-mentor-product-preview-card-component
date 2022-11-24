@@ -1,6 +1,7 @@
 /* Global Custom Properties */
 :root {
   --color-primary-400: hsl(158, 36%, 37%);
+  --color-primary-500: hsl(158, 36%, 20%);
   --color-secondary-200: hsl(30, 38%, 92%);
 
   --color-neutral-900: hsl(212, 21%, 14%);
@@ -27,6 +28,7 @@
 * {
   margin: 0;
 }
+
 /*
   6. Improve media defaults
 */
@@ -43,31 +45,43 @@ svg {
 body {
   background-color: var(--color-secondary-200);
   font-family: var(--font-family-base);
+  font-size: 1rem;
   font-weight: var(--font-weight-regular);
+  line-height: 2rem;
   color: var(--color-neutral-400);
 
+  display: grid;
+  place-content: center;
   margin: 1rem;
 }
 
-p {
-  line-height: 2rem;
-}
-
-/* Utilities (Class styling) */
+/* Utilities Classes styling) */
 .flex-row-container {
   display: flex;
   flex-wrap: wrap; /* if no more space continue in the next line */
-  align-items: center;
   gap: 1rem;
 }
+.flex-align-items-center {
+  align-items: center;
+}
+
+/* Button */
 .button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
   background-color: var(--color-primary-400);
   color: var(--color-neutral-100);
   font-size: 1rem;
   font-weight: var(--font-weight-bold);
   padding: 1rem;
   border-radius: 0.5rem;
-  border: none;
+  border: 0;
+}
+.button:hover {
+  background-color: var(--color-primary-500);
 }
 
 /* Component Styling */
@@ -76,9 +90,11 @@ p {
   --content-padding: 2rem;
   --content-spacing: 1rem;
 
+  display: grid;
   background-color: var(--color-neutral-100);
   border-radius: 0.5rem; /* .5rem compute as 8px in firefox */
   overflow: hidden;
+  max-width: 740px;
 }
 
 .product__main-content {
@@ -96,16 +112,28 @@ p {
 .product__category {
   order: -1;
   text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.5em;
 }
 
 .product__actual-price {
-  color: var(--color-primary-400);
   font-family: var(--font-family-fancy);
   font-size: 2rem;
+  color: var(--color-primary-400);
   line-height: 3rem;
 }
 
 .product__original-price {
   text-decoration: line-through;
+}
+
+@media (min-width: 600px) {
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  .product {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product__picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
